@@ -1,0 +1,47 @@
+{
+  "name": "react-top-progress",
+  "version": "1.1.0",
+  "description": "A lightweight modern top loading progress bar for React",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "demo_react_top_progress.webp"
+  ],
+  "keywords": [
+    "react",
+    "nextjs",
+    "nextjs loader",
+    "ssr progress bar",
+    "top loading bar",
+    "route progress",
+    "react progress bar",
+    "nextjs app router loader",
+    "lightweight loader",
+    "modern progress bar",
+    "nprogress",
+    "vite loader",
+    "react top loading bar",
+    "loading bar",
+    "page transition",
+    "progress indicator",
+    "react-router loader",
+    "remix loader",
+    "next14 loader",
+    "next15 loader"
+  ],
+  "author": "Harry Mate",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
+  }
+}

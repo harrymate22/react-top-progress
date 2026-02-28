@@ -34,18 +34,14 @@ class ProgressStore {
 
   continuousStart(startingValue?: number, refreshRate?: number) {
     this.cleanup();
-
-    // Start at a random percentage between 20-30
     this.value =
       startingValue !== undefined
         ? startingValue
         : Math.floor(Math.random() * 10) + 20;
     this.notify();
 
-    // Increment progress over time continuously
     this.interval = setInterval(() => {
       if (this.value !== null && this.value < 90) {
-        // increase by 2-10 repetitively
         const inc = Math.floor(Math.random() * 8) + 2;
         this.value = Math.min(this.value + inc, 90);
         this.notify();
@@ -55,7 +51,6 @@ class ProgressStore {
 
   staticStart(startingValue?: number) {
     this.cleanup();
-    // Start at a random percentage between 30-50
     this.value =
       startingValue !== undefined
         ? startingValue
@@ -71,11 +66,9 @@ class ProgressStore {
     this.cleanup();
     if (this.value === null) return;
 
-    // Complete the progress instantly
     this.value = 100;
     this.notify();
 
-    // Reset and hide after transition finishes
     this.hideTimer = setTimeout(() => {
       this.value = null;
       this.notify();
@@ -126,13 +119,10 @@ class ProgressStore {
   }
 }
 
-// Sealed internal singleton
 const progressStore = new ProgressStore();
 
-// Expose internal store specifically for the TopProgress React component
 export const useProgressStore = () => progressStore;
 
-// Public APIs
 export const startProgress = (type?: "continuous" | "static") =>
   progressStore.start(type);
 export const continuousStart = (startingValue?: number, refreshRate?: number) =>

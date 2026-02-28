@@ -17,7 +17,6 @@ export const useRouteProgress = () => {
     const handleAnchorClick = (event: MouseEvent) => {
       const target = event.currentTarget as HTMLAnchorElement;
 
-      // Skip if it opens in a new tab or is an external link or has download attribute
       if (
         !target.href ||
         target.target === "_blank" ||
@@ -34,7 +33,6 @@ export const useRouteProgress = () => {
         const targetUrl = new URL(target.href);
         const currentUrl = new URL(window.location.href);
 
-        // Same origin and different path/search means a route change
         if (
           targetUrl.origin === currentUrl.origin &&
           targetUrl.pathname !== currentUrl.pathname
@@ -42,7 +40,6 @@ export const useRouteProgress = () => {
           startProgress();
         }
       } catch (err) {
-        // Ignore invalid URLs
       }
     };
 
@@ -57,10 +54,8 @@ export const useRouteProgress = () => {
     const mutationObserver = new MutationObserver(handleMutation);
     mutationObserver.observe(document.body, { childList: true, subtree: true });
 
-    // Initial attachment
     handleMutation();
 
-    // Hook into History API to stop progress when route changes inherently complete
     const originalPushState = window.history.pushState;
     const originalReplaceState = window.history.replaceState;
 
